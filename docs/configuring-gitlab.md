@@ -13,7 +13,8 @@ This is an [Ansible](https://www.ansible.com/) role which installs [GitLab](http
 
 GitLab is a complete DevOps platform: Git repository management, code reviews, issue tracking, CI/CD, a container registry and more, in a single application. See the project's [documentation](https://docs.gitlab.com/) to learn more.
 
-The role uses GitLab's official [Omnibus container image](https://docs.gitlab.com/install/docker/) (`gitlab/gitlab-ce` or `gitlab/gitlab-ee`), which bundles all of GitLab's components, and generates its `/etc/gitlab/gitlab.rb` configuration file.
+>[!NOTE]
+> The role uses GitLab's official [Omnibus container image](https://docs.gitlab.com/install/docker/) (`gitlab/gitlab-ce` or `gitlab/gitlab-ee`), which bundles all of GitLab's components, and generates its `/etc/gitlab/gitlab.rb` configuration file.
 
 ## Prerequisites
 
