@@ -130,13 +130,13 @@
         - name: Check whether the GitLab container is running
           ansible.builtin.command:
             cmd: "{{ devture_systemd_docker_base_host_command_docker }} container inspect {{ gitlab_identifier }}"
-          register: gitlab_container_inspect_result
+          register: gitlab_container_container_raw
           changed_when: false
           failed_when: false
 
         # Prints a `Database: <name>` line per database, followed by a `<status> | <migration>` line per migration.
         - name: Retrieve the status of GitLab's batched background migrations
-          when: "gitlab_container_inspect_result.rc == 0 and (gitlab_container_inspect_result.stdout | from_json | first).State.Running"
+          when: "gitlab_container_container_raw.rc == 0 and (gitlab_container_container_raw.stdout | from_json | first).State.Running"
           ansible.builtin.command:
             cmd: >-
               {{ devture_systemd_docker_base_host_command_docker }} exec
