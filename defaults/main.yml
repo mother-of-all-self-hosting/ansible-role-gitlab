@@ -30,7 +30,7 @@ gitlab_data_path: "{{ gitlab_base_path }}/data"
 
 # The GitLab version to install. GitLab 19.2 and later are supported (see `tasks/validate_config.yml`).
 # renovate: datasource=docker depName=gitlab/gitlab-ce versioning=semver
-gitlab_version: 19.4.1
+gitlab_version: 19.4.2
 
 # The GitLab edition to install.
 # Valid values: ce (Community Edition), ee (Enterprise Edition)
