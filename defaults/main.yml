@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023 - 2025 Slavi Pantaleev
+# SPDX-FileCopyrightText: 2023-2025 Slavi Pantaleev
 # SPDX-FileCopyrightText: 2025 MASH project contributors
 # SPDX-FileCopyrightText: 2025, 2026 Suguru Hirahara
 # SPDX-FileCopyrightText: 2026 spatterlight
@@ -134,6 +134,9 @@ gitlab_container_labels_traefik_priority: 0
 gitlab_container_labels_traefik_entrypoints: web-secure
 gitlab_container_labels_traefik_tls: "{{ gitlab_container_labels_traefik_entrypoints != 'web' }}"
 gitlab_container_labels_traefik_tls_certResolver: default  # noqa var-naming
+gitlab_container_labels_traefik_middleware_basic_auth_enabled: false
+# See: https://doc.traefik.io/traefik/reference/routing-configuration/http/middlewares/basicauth/
+gitlab_container_labels_traefik_middleware_basic_auth_users: ""
 
 # Controls whether labels will be added that expose the container registry via Traefik.
 # See `gitlab_registry_enabled`.
