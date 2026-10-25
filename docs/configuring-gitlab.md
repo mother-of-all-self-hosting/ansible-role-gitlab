@@ -283,13 +283,13 @@ gitlab_configuration_extension_rb: |
 
 ## Installing
 
-After configuring the playbook, run the installation command:
+After configuring the playbook, run the installation command of your playbook as below:
 
 ```sh
 ansible-playbook -i inventory/hosts setup.yml --tags=setup-all,start
 ```
 
-With the MASH playbook, you can also run `just install-all` or `just setup-all` (see [`just`](https://github.com/mother-of-all-self-hosting/mash-playbook/blob/main/docs/just.md)).
+If you use the MASH playbook, the shortcut commands with the [`just` program](https://github.com/mother-of-all-self-hosting/mash-playbook/blob/main/docs/just.md) are also available: `just install-all` or `just setup-all`
 
 GitLab reconfigures itself on every start (and migrates its database after an upgrade), so it takes a few minutes to become reachable.
 
