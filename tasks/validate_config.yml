@@ -70,16 +70,19 @@
         - gitlab_database_postgres_password
         - gitlab_database_name
 
-    # GitLab writes the password into its `database.yml` file with Ruby's `String#inspect`,
+    # GitLab writes the username and password into its `database.yml` file with Ruby's `String#inspect`,
     # which turns these sequences into `\#{`, `\#$` and `\#@`. Those are not valid escapes in YAML,
     # so GitLab would fail to parse its own configuration and never finish starting.
-    - name: Fail if the Postgres password for GitLab contains a sequence GitLab cannot handle
+    - name: Fail if the Postgres username or password for GitLab contains a sequence GitLab cannot handle
       ansible.builtin.fail:
         msg: >-
-          gitlab_database_postgres_password must not contain `#{`, `#$` or `#@`,
+          {{ item }} must not contain `#{`, `#$` or `#@`,
           because GitLab fails to parse its own database configuration if it does.
-          Please choose another password.
-      when: gitlab_database_postgres_password is search('#[{$@]')
+          Please choose another value.
+      when: "lookup('vars', item) is search('#[{$@]')"
+      with_items:
+        - gitlab_database_postgres_username
+        - gitlab_database_postgres_password
 
     - name: Fail if the Postgres version for GitLab is invalid
       ansible.builtin.fail:
