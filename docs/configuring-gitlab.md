@@ -85,7 +85,7 @@ gitlab_database_postgres_socket_enabled: true
 gitlab_database_postgres_socket_path_host: /postgres/run
 ```
 
-The password must not contain `#{`, `#$` or `#@`, which GitLab cannot handle. For other settings, see the `gitlab_database_*` variables in [`defaults/main.yml`](../defaults/main.yml).
+The username and password must not contain `#{`, `#$` or `#@`, which GitLab cannot handle. For other settings, see the `gitlab_database_*` variables in [`defaults/main.yml`](../defaults/main.yml).
 
 #### Matching the Postgres version
 
