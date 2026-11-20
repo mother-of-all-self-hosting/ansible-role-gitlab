@@ -14,9 +14,6 @@
   with_items:
     - gitlab_uid
     - gitlab_gid
-    - gitlab_hostname
-    - gitlab_path_prefix
-    - gitlab_container_network
 
 - name: Fail if GitLab edition is invalid
   ansible.builtin.fail:
