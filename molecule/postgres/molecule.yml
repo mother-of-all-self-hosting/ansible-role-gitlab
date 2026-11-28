@@ -52,7 +52,7 @@ provisioner:
 
         # Variables required for GitLab to connect to the Postgres database (via Unix socket)
         gitlab_database_type: postgres
-        gitlab_database_postgres_username: my_database_username
+        gitlab_database_postgres_username: /#@my_database_username?%
         # Contains characters which need escaping in `gitlab.rb` (Ruby), so that an escaping mistake fails
         # the database connection. (`#{` is not used, as GitLab cannot handle it. See `tasks/validate_config.yml`.)
         gitlab_database_postgres_password: "my_database\"pass#word\\"
