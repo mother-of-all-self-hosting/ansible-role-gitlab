@@ -42,7 +42,6 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --rm \
       --name={{ gitlab_identifier }} \
       --log-driver=none \
-      --network={{ gitlab_container_network }} \
       --cap-drop=ALL \
       --cap-add=CHOWN \
       --cap-add=DAC_OVERRIDE \
@@ -56,6 +55,7 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       --cap-add=SYS_CHROOT \
       --cap-add=AUDIT_WRITE \
       {% endif %}
+      --network={{ gitlab_container_network }} \
       --security-opt=no-new-privileges \
       --shm-size={{ gitlab_container_shm_size }} \
       --health-interval=10s \
@@ -88,9 +88,11 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       {% endfor %}
       {{ gitlab_container_image }}
 
+{% if gitlab_container_network != 'host' %}
 {% for network in gitlab_container_additional_networks %}
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} network connect {{ network }} {{ gitlab_identifier }}
 {% endfor %}
+{% endif %}
 
 ExecStart={{ devture_systemd_docker_base_host_command_docker }} start --attach {{ gitlab_identifier }}
 
