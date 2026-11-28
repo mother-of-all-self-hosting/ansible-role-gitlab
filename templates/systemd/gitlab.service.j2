@@ -86,7 +86,10 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
       {% for arg in gitlab_container_extra_arguments %}
       {{ arg }} \
       {% endfor %}
-      {{ gitlab_container_image }}
+      {{ gitlab_container_image }} \
+      {% for arg in gitlab_process_extra_arguments %}
+      {{ arg }} \
+      {% endfor %}
 
 {% if gitlab_container_network != 'host' %}
 {% for network in gitlab_container_additional_networks %}

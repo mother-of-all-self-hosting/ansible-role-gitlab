@@ -194,6 +194,12 @@ gitlab_container_extra_arguments: "{{ gitlab_container_extra_arguments_auto + gi
 gitlab_container_extra_arguments_auto: []
 gitlab_container_extra_arguments_custom: []
 
+# A list of extra arguments to pass to the process inside the container
+# Example: ['--SOME_ARGUMENT']
+gitlab_process_extra_arguments: "{{ gitlab_process_extra_arguments_auto + gitlab_process_extra_arguments_custom }}"
+gitlab_process_extra_arguments_auto: []
+gitlab_process_extra_arguments_custom: []
+
 # Intentionally leaving this blank, instead of defaulting it to `gitlab_hostname`, to avoid specifying a hostname
 # which could render other services on that hostname potentially unreachable.
 # See: https://github.com/mother-of-all-self-hosting/mash-playbook/issues/391
